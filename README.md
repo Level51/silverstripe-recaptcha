@@ -3,18 +3,18 @@ Google's neue "high-intelligence" reCAPTCHA Lösung als SilverStripe Modul bzw. 
 
 ---
 # Features
-* Verwaltung von reCAPTCHA Credentials via SiteConfig im Backend.
-* AJAX-Kompatibilität
-* Integration mit UserForms Modul
+- Verwaltung von reCAPTCHA Credentials via SiteConfig im Backend.
+- AJAX-Kompatibilität
+- Integration mit UserForms Modul
 
 ---
 # Dependencies
-* "php": ">=5.3.2"
-* "google/recaptcha": "~1.1"
+- "php": ">=5.3.2"
+- "google/recaptcha": "~1.1"
 
 ---
 # Notizen
-- ...
+- Für Tests auf dem localhost können jegliche Credentials verwendet werden.
 
 ---
 # Checkout
