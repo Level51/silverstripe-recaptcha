@@ -20,6 +20,8 @@ Google's neue "high-intelligence" reCAPTCHA Lösung als SilverStripe Modul bzw. 
 # Checkout
 - https://github.com/google/recaptcha
 - https://www.google.com/recaptcha/intro/index.html
+- https://github.com/chillu/silverstripe-recaptcha
+- https://developers.google.com/recaptcha/docs/verify#error-code-reference
 
 ---
 # Maintainers
