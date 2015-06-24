@@ -69,15 +69,23 @@ class RecaptchaField extends FormField {
 
         // Handle validation errors
         if(!$validationResponse->isSuccess()) {
-            // Loop over error codes
-            foreach($validationResponse->getErrorCodes() as $err) {
-                // TODO: Give precise error messages instead of the following generic one
+
+            $errorCodes = $validationResponse->getErrorCodes();
+            $errorString = '';
+
+            if ( in_array('invalid-input-secret', $errorCodes) && in_array('invalid-input-response', $errorCodes) ) {
+                $errorString =  _t('RecaptchaField.ERROR_INVALID_RESPONSE', 'Your secret key and your response seems to be wrong, please check your settings and try again');
+            } else if ( in_array('invalid-input-secret', $errorCodes) ) {
+                $errorString =  _t('RecaptchaField.ERROR_INVALID_RESPONSE', 'Your secret key seems to be wrong.');
+            } else if ( in_array('invalid-input-response', $errorCodes) ){
+                $errorString =  _t('RecaptchaField.ERROR_INVALID_RESPONSE', 'Your response was wrong, please try again.');
+            } else {
+                $errorString =  _t('RecaptchaField.ERROR', 'There was an error validating your identity.');
             }
 
-            // Set error message and exit
             $validator->validationError(
                 $this->name,
-                _t('RecaptchaField.ERROR', 'There was an error validating our identity.'),
+                $errorString,
                 'validation'
             );
 
