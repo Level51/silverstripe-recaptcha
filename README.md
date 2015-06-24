@@ -6,6 +6,23 @@ Google's neue "high-intelligence" reCAPTCHA Lösung als SilverStripe Modul bzw. 
 - Verwaltung von reCAPTCHA Credentials via SiteConfig im Backend.
 - AJAX-Kompatibilität
 - Integration mit UserForms Modul
+- Custom CSS Klassen: `$captcha->setCSS(array('test1', 'test2'));`
+
+---
+# JavaScript Options
+* theme: dark, light (default)
+* type: audio, image (default)
+* size: compact, normal (default),
+* tabindex: Dezimalzahlen (0 ist default)
+* callback: Wird im Erfolgsfall ausgelöst und erhält *g-recaptcha-response* als Parameter
+* expired-callback: Wird ausgelöst wenn die aktuelle Captcha Session abgelaufen ist und der User ein Neues lösen muss
+
+Beispiel zur Verwendung:
+
+```php
+$captcha = RecaptchaField::create('Captcha');
+$captcha->settings('theme', 'dark');
+```
 
 ---
 # Dependencies

@@ -7,6 +7,23 @@
  * Class RecaptchaField
  */
 class RecaptchaField extends FormField {
+    /**
+     * JavaScript options array in the following form:
+     *  array(
+     *      'theme' => 'dark'
+     *  );
+     *
+     * @see https://developers.google.com/recaptcha/docs/display#render_param
+     * @var array
+     */
+    private $jsOptions = array();
+
+    /**
+     * CSS classes to apply to recaptcha base class
+     * @var array
+     */
+    private $css = array();
+
     public function Field($properties = array()) {
         // Check if keys were given
         if( empty(SiteConfig::current_site_config()->RecaptchaSecret) ||
@@ -16,8 +33,17 @@ class RecaptchaField extends FormField {
         // Include Google's JS
         Requirements::javascript('https://www.google.com/recaptcha/api.js');
 
+        // Build css class string
+        $css = ' ' . implode(' ', $this->css);
+
+        // Iterate over JavaScript options and build config markup for tag
+        $jsOpt = '';
+        foreach($this->jsOptions as $key=>$val) {
+            $jsOpt .= "data-$key='$val' ";
+        }
+
         // Return non-rendered field was div
-        return '<div class="g-recaptcha" data-sitekey="' . SiteConfig::current_site_config()->RecaptchaWebkey . '"></div>';
+        return "<div class='g-recaptcha $css' data-sitekey='" . SiteConfig::current_site_config()->RecaptchaWebkey . "' $jsOpt></div>";
     }
 
     public function validate($validator) {
@@ -60,5 +86,26 @@ class RecaptchaField extends FormField {
 
         // If you made it to this point you are validated as human - yeah!
         return true;
+    }
+
+    /**
+     * Injection method for JavaScript options
+     * @param $key
+     * @param $val
+     */
+    public function settings($key, $val) {
+        $this->jsOptions[$key] = $val;
+    }
+
+    /**
+     * Add one (String) or more (Array) CSS classes to apply to the recaptcha base tag
+     * @param $classes
+     */
+    public function setCSS($classes) {
+        if(is_array($classes)) {
+            foreach($classes as $class)
+                $this->css[] = $class;
+        } else
+            $this->css[] = $classes;
     }
 }
