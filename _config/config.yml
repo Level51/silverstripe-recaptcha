@@ -1,0 +1,6 @@
+---
+Name: recaptcha-fancy
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
