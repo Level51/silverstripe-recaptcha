@@ -74,7 +74,7 @@ class RecaptchaField extends FormField {
             $errorString = '';
 
             if ( in_array('invalid-input-secret', $errorCodes) && in_array('invalid-input-response', $errorCodes) ) {
-                $errorString =  _t('RecaptchaField.ERROR_INVALID_RESPONSE', 'Your secret key and your response seems to be wrong, please check your settings and try again');
+                $errorString =  _t('RecaptchaField.ERROR_INVALID_RESPONSE', 'Your secret key and your response seem to be wrong, please check your settings and try again');
             } else if ( in_array('invalid-input-secret', $errorCodes) ) {
                 $errorString =  _t('RecaptchaField.ERROR_INVALID_RESPONSE', 'Your secret key seems to be wrong.');
             } else if ( in_array('invalid-input-response', $errorCodes) ){
