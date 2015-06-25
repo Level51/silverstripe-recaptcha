@@ -1,0 +1,10 @@
+en:
+  RecaptchaConfig:
+    LINK: 'Link to admin panel'
+    SECRET: 'Secret API-key'
+    VERSION: 'reCAPTCHA version'
+    WEB_KEY: 'Website key'
+  RecaptchaField:
+    EMPTY: 'Please verify that you are not a robot. Tick the reCAPTCHA checkbox.'
+    ERROR: 'There was an error validating your identity.'
+    ERROR_INVALID_RESPONSE: 'Your response was wrong, please try again.'

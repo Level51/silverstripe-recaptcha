@@ -1,0 +1,10 @@
+de:
+  RecaptchaConfig:
+    LINK: 'Link zum Admin Panel'
+    SECRET: 'Geheimer API-Key'
+    VERSION: 'reCAPTCHA Version'
+    WEB_KEY: 'Website Key'
+  RecaptchaField:
+    EMPTY: 'Durch abhaken der reCAPTCHA Checkbox bestätigen Sie, dass Sie kein Roboter sind. '
+    ERROR: 'Es gab ein Problem bei der Prüfung Ihrer Identität.'
+    ERROR_INVALID_RESPONSE: 'Ihre Antwort war falsch, bitte versuchen Sie es erneut.'
