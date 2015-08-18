@@ -1,20 +1,20 @@
 {
-	"name": "ss-modules/recaptcha-fancy",
+	"name": "Level51/silverstripe-recaptcha",
 	"version": "0.1.0",
 	"authors": [{
 		"name": "Julian Scheuchenzuber",
 		"email": "js@lvl51.de"
 	}, {
-    "name": "Daniel Kliemsch",
-    "email": "dk@lvl51.de"
-  }],
-	"description": "Google's high intelligence reCAPTCHA solution for SilverStripe.",
-  "type": "silverstripe-module",
+		"name": "Daniel Kliemsch",
+		"email": "dk@lvl51.de"
+	}],
+	"description": "Google's new \"high-intelligence\" reCAPTCHA approach as SilverStripe module/datafield.",
+	"type": "silverstripe-module",
 	"require": {
 		"php": ">=5.3.2",
-    "google/recaptcha": "~1.1"
+		"google/recaptcha": "~1.1"
 	},
-  "extra": {
-    "installer-name": "recaptcha-fancy"
-  }
+	"extra": {
+		"installer-name": "recaptcha-fancy"
+	}
 }

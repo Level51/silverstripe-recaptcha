@@ -1,46 +1,44 @@
-# reCAPTCHA fancy
-Google's neue "high-intelligence" reCAPTCHA Lösung als SilverStripe Modul bzw. Datafield.
+## Maintainers
+- Julian Scheuchenzuber <js@lvl51.de>
+- Daniel Kliemsch <dk@lvl51.de>
 
----
-# Features
-- Verwaltung von reCAPTCHA Credentials via SiteConfig im Backend.
-- AJAX-Kompatibilität
-- Integration mit UserForms Modul
-- Custom CSS Klassen: `$captcha->setCSS(array('test1', 'test2'));`
+## Installation
+```
+composer require level51/silverstripe-recaptcha
+```
 
----
-# JavaScript Options
+If you don't like composer you can just download and unpack it to the root of your SilverStripe project.
+
+## Features
+- reCAPTCHA administration via SiteConfig.
+- AJAX-Compatibility.
+- Integration with *UserForms* module
+- Custom CSS classes: `$captcha->setCSS(array('test1', 'test2'));`
+
+## JavaScript Options
 * theme: dark, light (default)
 * type: audio, image (default)
-* size: compact, normal (default),
-* tabindex: Dezimalzahlen (0 ist default)
-* callback: Wird im Erfolgsfall ausgelöst und erhält *g-recaptcha-response* als Parameter
-* expired-callback: Wird ausgelöst wenn die aktuelle Captcha Session abgelaufen ist und der User ein Neues lösen muss
+* size: compact, normal (default)
+* tabindex: Decimal (0 is default)
+* callback: Is invoked if validation was successful and receives *g-recaptcha-response* as parameter.
+* expired-callback: Is invoiked when current captcha session was expired. The user will have to "solve" a new captcha.
 
-Beispiel zur Verwendung:
+Example usage:
 
 ```php
 $captcha = RecaptchaField::create('Captcha');
 $captcha->settings('theme', 'dark');
 ```
 
----
-# Dependencies
+## Dependencies
 - "php": ">=5.3.2"
 - "google/recaptcha": "~1.1"
 
----
-# Notizen
-- Für Tests auf dem localhost können jegliche Credentials verwendet werden.
+## Notes
+- For testing on localhost you may use any credentials.
 
----
-# Checkout
+## Checkout
 - https://github.com/google/recaptcha
 - https://www.google.com/recaptcha/intro/index.html
 - https://github.com/chillu/silverstripe-recaptcha
 - https://developers.google.com/recaptcha/docs/verify#error-code-reference
-
----
-# Maintainers
-- Julian Scheuchenzuber <js@lvl51.de>
-- Daniel Kliemsch <dk@lvl51.de>
