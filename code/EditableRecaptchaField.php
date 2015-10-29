@@ -9,7 +9,7 @@ if(class_exists('EditableFormField')) {
         private static $plural_name = 'reCAPTCHA Fields';
 
         public function getFormField() {
-            return RecaptchaField::create($this->Title);
+            return RecaptchaField::create($this->Name);
         }
 
         public function getRequired() {
@@ -22,6 +22,21 @@ if(class_exists('EditableFormField')) {
 
         public function showInReports() {
             return false;
+        }
+
+        public function validateField($data, $form) {
+            $_this = $this;
+            // Get the related field
+            $formField = $this->getFormField();
+
+            // Validate the field, check the result and set the message
+            if (!$formField->validate($form->getValidator()))
+                foreach($form->getValidator()->getErrors() as $error) {
+                    if ($error['fieldName'] == $_this->Name)
+                        $form->addErrorMessage($this->Name, $error['message'], 'error', false);
+                }
+
+            return true;
         }
     }
 }
