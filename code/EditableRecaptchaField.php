@@ -9,7 +9,7 @@ if(class_exists('EditableFormField')) {
         private static $plural_name = 'reCAPTCHA Fields';
 
         public function getFormField() {
-            return RecaptchaField::create($this->Name);
+            return RecaptchaField::create($this->Name, $this->EscapedTitle);
         }
 
         public function getRequired() {
