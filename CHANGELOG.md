@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file. Thanks to O
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [0.1.3] - 2016-07-19
 ### Added
 - Possibility to provide default credentials via Configuration API.
 - Possibility to load javascript with language parameter.
