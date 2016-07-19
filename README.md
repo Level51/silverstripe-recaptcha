@@ -30,6 +30,15 @@ $captcha = RecaptchaField::create('Captcha');
 $captcha->settings('theme', 'dark');
 ```
 
+## Configuration
+You can set default credentials which will be written in the DB during `dev/build`:
+
+```yml
+Recaptcha:
+  key: YOUR_RECAPTCHA_KEY
+  secret: YOUR_RECAPTCHA_SECRET
+```
+
 ## Dependencies
 - "php": ">=5.3.2"
 - "google/recaptcha": "~1.1"
