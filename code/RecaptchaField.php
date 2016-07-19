@@ -31,7 +31,9 @@ class RecaptchaField extends FormField {
             user_error('Please specify valid reCAPTCHA API keys.', E_USER_ERROR);
 
         // Include Google's JS
-        Requirements::javascript('https://www.google.com/recaptcha/api.js');
+        $scriptURL = 'https://www.google.com/recaptcha/api.js';
+        if(isset($properties['hl'])) $scriptURL .= '?hl=' . $properties['hl'];
+        Requirements::javascript($scriptURL);
 
         // Build css class string
         $css = ' ' . implode(' ', $this->css);
