@@ -28,7 +28,7 @@ class RecaptchaField extends FormField {
         // Check if keys were given
         if( empty(SiteConfig::current_site_config()->RecaptchaSecret) ||
             empty(SiteConfig::current_site_config()->RecaptchaWebkey))
-            user_error('Please specify valid reCAPTCHA API keys.', E_USER_ERROR);
+            SS_Log::log('Please specify valid reCAPTCHA API keys.', SS_Log::ERR);
 
         // Include Google's JS
         $scriptURL = 'https://www.google.com/recaptcha/api.js';
