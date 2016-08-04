@@ -67,7 +67,7 @@ class RecaptchaField extends FormField {
         $recaptcha = new \ReCaptcha\ReCaptcha(SiteConfig::current_site_config()->RecaptchaSecret);
 
         // Verify identity
-        $validationResponse = $recaptcha->verify($captchaResponse, $_SERVER['REMOTE_ADDR']);
+        $validationResponse = $recaptcha->verify($captchaResponse, $this->getClientIp());
 
         // Handle validation errors
         if(!$validationResponse->isSuccess()) {
@@ -96,6 +96,25 @@ class RecaptchaField extends FormField {
 
         // If you made it to this point you are validated as human - yeah!
         return true;
+    }
+
+    /**
+     * Determins the client's IP.
+     *
+     * @return string The determined IP address of the client.
+     */
+    private function getClientIp() {
+        if (isset($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'] != '') {
+            $ip = $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
+        } else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '') {
+            $addresses = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            $ip = trim($addresses[0]);
+        } else if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] != '')
+            $ip = $_SERVER['REMOTE_ADDR'];
+        else
+            $ip = '127.0.0.1';
+
+        return $ip;
     }
 
     /**
