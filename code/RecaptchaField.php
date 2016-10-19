@@ -7,6 +7,12 @@
  * Class RecaptchaField
  */
 class RecaptchaField extends FormField {
+
+    /**
+     * @var Locale to init the field with. Auto-detects the user's language if unspecified.
+     */
+    private $locale = null;
+
     /**
      * JavaScript options array in the following form:
      *  array(
@@ -33,7 +39,7 @@ class RecaptchaField extends FormField {
 
         // Include Google's JS
         $scriptURL = 'https://www.google.com/recaptcha/api.js';
-        if(isset($properties['hl'])) $scriptURL .= '?hl=' . $properties['hl'];
+        if($this->locale !== null) $scriptURL .= '?hl=' . $this->locale;
         Requirements::javascript($scriptURL);
 
         // Build css class string
@@ -120,14 +126,20 @@ class RecaptchaField extends FormField {
      * Injection method for JavaScript options
      * @param $key
      * @param $val
+     *
+     * @return RecaptchaField
      */
     public function settings($key, $val) {
         $this->jsOptions[$key] = $val;
+
+        return $this;
     }
 
     /**
      * Add one (String) or more (Array) CSS classes to apply to the recaptcha base tag
      * @param $classes
+     *
+     * @return RecaptchaField
      */
     public function setCSS($classes) {
         if(is_array($classes)) {
@@ -135,5 +147,21 @@ class RecaptchaField extends FormField {
                 $this->css[] = $class;
         } else
             $this->css[] = $classes;
+
+        return $this;
+    }
+
+    /**
+     * Sets a locale for the field.
+     *
+     * @param $locale
+     *
+     * @see https://developers.google.com/recaptcha/docs/language
+     * @return RecaptchaField
+     */
+    public function setLocale($locale) {
+        $this->locale = $locale;
+
+        return $this;
     }
 }

@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Cleaned up code in validate method
+- Reworked logic how to pass a locale to the field
 
 ### Fixed
 - Fixed possible security fault in IP detection method
