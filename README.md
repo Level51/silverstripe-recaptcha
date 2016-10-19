@@ -14,6 +14,7 @@ If you don't like composer you can just download and unpack it to the root of yo
 - AJAX-Compatibility.
 - Integration with *UserForms* module
 - Custom CSS classes: `$captcha->setCSS(array('test1', 'test2'));`
+- Specify a locale: `$captcha->setLocale('de');`
 
 ## JavaScript Options
 * theme: dark, light (default)
