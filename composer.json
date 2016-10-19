@@ -1,7 +1,8 @@
 {
 	"name": "level51/silverstripe-recaptcha",
-	"version": "0.1.4",
-	"time": "2016-08-04",
+	"version": "0.1.5",
+	"time": "2016-10-19",
+	"license": "MIT",
 	"authors": [{
 		"name": "Julian Scheuchenzuber",
 		"email": "js@lvl51.de"
