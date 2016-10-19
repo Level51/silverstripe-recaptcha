@@ -30,7 +30,7 @@ class RecaptchaField extends FormField {
      */
     private $css = array();
 
-    public function Field() {
+    public function Field($properties = array()) {
 
         // Check if keys were given
         if( empty(SiteConfig::current_site_config()->RecaptchaSecret) ||
@@ -39,7 +39,11 @@ class RecaptchaField extends FormField {
 
         // Include Google's JS
         $scriptURL = 'https://www.google.com/recaptcha/api.js';
-        if($this->locale !== null) $scriptURL .= '?hl=' . $this->locale;
+        if($this->locale !== null)
+            $scriptURL .= '?hl=' . $this->locale;
+        else if(isset($properties['hl']))
+            $scriptURL .= '?hl' . $properties['hl'];
+
         Requirements::javascript($scriptURL);
 
         // Build css class string
