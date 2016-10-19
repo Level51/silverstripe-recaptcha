@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file. Thanks to O
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.1.5] - 2016-10-19
+### Added
+- Added license (MIT)
+
+### Changed
+- Cleaned up code in validate method
+
+### Fixed
+- Fixed possible security fault in IP detection method
+
 ## [0.1.4] - 2016-08-04
 ### Added
 - Enhanced method for determining the client IP for identity verification.

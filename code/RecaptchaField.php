@@ -24,7 +24,8 @@ class RecaptchaField extends FormField {
      */
     private $css = array();
 
-    public function Field($properties = array()) {
+    public function Field() {
+
         // Check if keys were given
         if( empty(SiteConfig::current_site_config()->RecaptchaSecret) ||
             empty(SiteConfig::current_site_config()->RecaptchaWebkey))
@@ -73,8 +74,6 @@ class RecaptchaField extends FormField {
         if(!$validationResponse->isSuccess()) {
 
             $errorCodes = $validationResponse->getErrorCodes();
-            $errorString = '';
-
             if ( in_array('invalid-input-secret', $errorCodes) && in_array('invalid-input-response', $errorCodes) ) {
                 $errorString =  _t('RecaptchaField.ERROR_INVALID_RESPONSE', 'Your secret key and your response seem to be wrong, please check your settings and try again');
             } else if ( in_array('invalid-input-secret', $errorCodes) ) {
@@ -101,7 +100,7 @@ class RecaptchaField extends FormField {
     /**
      * Determins the client's IP.
      *
-     * @return string The determined IP address of the client.
+     * @return null|string The determined IP address of the client.
      */
     private function getClientIp() {
         if (isset($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'] != '') {
@@ -112,7 +111,7 @@ class RecaptchaField extends FormField {
         } else if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] != '')
             $ip = $_SERVER['REMOTE_ADDR'];
         else
-            $ip = '127.0.0.1';
+            $ip = null;
 
         return $ip;
     }
