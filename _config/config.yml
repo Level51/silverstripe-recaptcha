@@ -1,0 +1,9 @@
+---
+Name: recaptcha-fancy
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+SiteConfig:
+  extensions:
+    - RecaptchaConfig
